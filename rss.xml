@@ -1,0 +1,75 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>IOL Cape Times</title>
+        <link>http://www.iol.co.za/cape-times</link>
+        <description>IOL Cape Times RSS Feed</description>
+        <language>en-us</language>
+        <pubDate><?php echo date('r'); ?></pubDate>
+        <lastBuildDate><?php echo date('r'); ?></lastBuildDate>
+        <atom:link href="http://rss.iol.io/iol/capetimes" rel="self" type="application/rss+xml" />
+        
+        <?php
+        // Function to fetch and parse the RSS feed for Cape Times section
+        function parse_cape_times_rss_feed($url) {
+            // Fetch RSS feed
+            $rss = simplexml_load_file($url);
+
+            // Check if the RSS feed is valid
+            if ($rss === false) {
+                return false;
+            }
+
+            // Initialize an array to store parsed items
+            $parsed_items = array();
+
+            // Loop through each item in the RSS feed
+            foreach ($rss->channel->item as $item) {
+                // Extract relevant information from each item
+                $title = (string) $item->title;
+                $link = (string) $item->link;
+                $description = (string) $item->description;
+                $pubDate = (string) $item->pubDate;
+
+                // Add the extracted information to the parsed items array
+                $parsed_items[] = array(
+                    'title' => $title,
+                    'link' => $link,
+                    'description' => $description,
+                    'pubDate' => $pubDate
+                    // Add more fields if needed
+                );
+            }
+
+            // Return the array of parsed items
+            return $parsed_items;
+        }
+
+        // URL of the RSS feed for Cape Times
+        $cape_times_rss_feed_url = 'http://rss.iol.io/iol/capetimes';
+
+        // Parse the RSS feed for Cape Times
+        $parsed_cape_times_feed = parse_cape_times_rss_feed($cape_times_rss_feed_url);
+
+        // Check if parsing was successful
+        if ($parsed_cape_times_feed !== false) {
+            // Output the parsed items
+            foreach ($parsed_cape_times_feed as $item) {
+                echo '<item>';
+                echo '<title>' . $item['title'] . '</title>';
+                echo '<link>' . $item['link'] . '</link>';
+                echo '<description>' . $item['description'] . '</description>';
+                echo '<pubDate>' . $item['pubDate'] . '</pubDate>';
+                echo '</item>';
+            }
+        } else {
+            // Handle the case where parsing failed
+            echo '<item>';
+            echo '<title>Failed to parse the RSS feed for Cape Times</title>';
+            echo '<description></description>';
+            echo '<pubDate>' . date('r') . '</pubDate>';
+            echo '</item>';
+        }
+        ?>
+        
+    </channel>
+</rss>

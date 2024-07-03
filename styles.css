@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.container {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    margin-top: 0;
+}
+section {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+.map {
+    height: 400px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.link:hover {
+    background-color: #555;
+}
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.images {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+margin-top: 20px; /* Adjust the value as needed */
+}
+.rss{
+    padding:20px;
+    margin:20px;
+    color: black;
+    background-color: lightgray;
+    border-radius: 10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+}
